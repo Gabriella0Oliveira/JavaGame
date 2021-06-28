@@ -11,8 +11,14 @@ public class Game {
         window.setSize(1200,700);
         window.setLocationRelativeTo(null);
         window.setLayout(null);
-        window.setBackground(Color.BLACK); //trying to set the background color.
+        // window.setBackground(Color.BLACK); //trying to set the background color.
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //exits game when window close.
         window.setVisible(true);
+
+        SpaceGame spaceInvaders = new SpaceGame();
+        spaceInvaders.setBounds(0,0,1200,700);
+        spaceInvaders.setBackground(Color.BLACK); // Ok, I think it makes more sense to put the background here
+
+        window.add(spaceInvaders);
     }
 }
