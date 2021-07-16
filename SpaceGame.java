@@ -56,6 +56,17 @@ public class SpaceGame extends JPanel implements Runnable, KeyListener {
                 shots.remove(i);
                 i--;
             }
+
+             else {
+                for (int j = 0; j < enemies.size(); j++) {
+                    if (shots.get(i).isColliding(enemies.get(j))) {
+
+                        enemies.remove(j);
+                        shots.remove(i);
+                        break;
+                    }
+                }
+            }
         }
 
         for (Enemy value : enemies) {
