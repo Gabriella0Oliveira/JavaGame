@@ -6,7 +6,7 @@ import java.io.File;
 public class Spaceship {
 
     private BufferedImage image;
-    private final int x; //position
+    private int x; //position
     private int speed;
 
     public Spaceship(){
@@ -26,8 +26,12 @@ public class Spaceship {
         g.drawImage(image,x,550,x+ 100 , 650, 0, 0,image.getWidth(),image.getHeight(),null );
     }
 
-    public void move(){
-
+    public void move(int direction){
+        if(direction == 1) {
+            x += speed;
+        } else if (direction == -1) {
+            x -= speed;
+        }
     }
 
     public void shoot(){
