@@ -15,7 +15,7 @@ public class Enemy {
 
     public Enemy() {
 
-        x = 400;
+        x = 600;
         speed = 2;
 
         try {
@@ -28,6 +28,8 @@ public class Enemy {
     }
 
     public void paint(Graphics2D g) {
+        g.drawImage(image,x,y,x + 50 , y + 50, 0, 0,image.getWidth(),image.getHeight(),null );
+
     }
 
     public void move() {
