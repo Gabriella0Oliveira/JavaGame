@@ -1,8 +1,5 @@
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
 public class Enemy {
 
@@ -13,17 +10,13 @@ public class Enemy {
     private int direction;
 
 
-    public Enemy() {
+    public Enemy(BufferedImage image, int X, int Y, int direction) {
 
-        x = 600;
-        speed = 2;
-
-        try {
-            image = ImageIO.read(new File("images/enemy.png"));
-        } catch (IOException e) {
-            System.out.println("couldn't load image");
-            e.printStackTrace();
-        }
+        this.x = X;
+        this.y = Y;
+        this.direction = direction;
+        this.speed = 1;
+        this.image = image;
 
     }
 
@@ -32,9 +25,24 @@ public class Enemy {
 
     }
 
-    public void move() {
+    public void update(){
+        x += speed * direction;
     }
 
     public void setDirection() {
+        direction = direction * -1 ;
+        y += 15;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY(){
+        return y;
+    }
+
+    public int getSize(){
+        return 50;
     }
 }
