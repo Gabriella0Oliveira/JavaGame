@@ -34,7 +34,9 @@ public class Spaceship {
         }
     }
 
-    public void shoot(){
-
+    public Shot shoot(){
+        Shot shots;
+        shots = new Shot(x+49, 550);
+        return shots;
     }
 }
