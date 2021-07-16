@@ -2,15 +2,18 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 
 public class SpaceGame extends JPanel implements Runnable, KeyListener {
 
     Spaceship spaceship;
     private int direction = 0;
+    private final ArrayList<Shot> shots;
 
     public SpaceGame() {
 
         spaceship = new Spaceship();
+        shots = new ArrayList<>();
 
         Thread game = new Thread(this);
         game.start();  //this will call run() method
@@ -28,6 +31,14 @@ public class SpaceGame extends JPanel implements Runnable, KeyListener {
     private void update() {
         spaceship.move(direction);
         //System.out.println("updating"); // just checking if it updates
+        for (int i = 0; i < shots.size(); i++) {
+            shots.get(i).update();
+
+            if (shots.get(i).destroy()) {
+                shots.remove(i);
+                i--;
+            }
+        }
     }
 
 
@@ -37,6 +48,10 @@ public class SpaceGame extends JPanel implements Runnable, KeyListener {
         Graphics2D g = (Graphics2D) g2.create();
 
         spaceship.paint(g);
+
+        for (Shot shot : shots) {
+            shot.paint(g);
+        }
 
         /*g.setColor(Color.white);
         g.fillRect(0,0,50,50); testing */
@@ -59,6 +74,10 @@ public class SpaceGame extends JPanel implements Runnable, KeyListener {
         if (keyEvent.getKeyCode() == KeyEvent.VK_LEFT || keyEvent.getKeyCode() == KeyEvent.VK_A) {
             //System.out.println("test b");
             direction = -1;
+        }
+        if (keyEvent.getKeyCode() == KeyEvent.VK_ENTER || keyEvent.getKeyCode() == KeyEvent.VK_S) {
+            //System.out.println("shoot");
+            shots.add(spaceship.shoot());
         }
 
     }
