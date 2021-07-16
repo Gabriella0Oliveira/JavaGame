@@ -7,12 +7,14 @@ import java.util.ArrayList;
 public class SpaceGame extends JPanel implements Runnable, KeyListener {
 
     Spaceship spaceship;
+    Enemy enemy;
     private int direction = 0;
     private final ArrayList<Shot> shots;
 
     public SpaceGame() {
 
         spaceship = new Spaceship();
+        enemy = new Enemy();
         shots = new ArrayList<>();
 
         Thread game = new Thread(this);
@@ -48,6 +50,7 @@ public class SpaceGame extends JPanel implements Runnable, KeyListener {
         Graphics2D g = (Graphics2D) g2.create();
 
         spaceship.paint(g);
+        enemy.paint(g);
 
         for (Shot shot : shots) {
             shot.paint(g);
