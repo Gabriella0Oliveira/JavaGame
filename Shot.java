@@ -5,6 +5,8 @@ public class Shot {
     private final int x;
     private int y;
     private final int speed;
+    private int sizeX = 5;
+    private int sizeY = 15;
 
 
     public Shot(int X, int Y){
@@ -24,5 +26,13 @@ public class Shot {
 
     public boolean destroy() {
         return y < 0;
+    }
+
+    public boolean isColliding(Enemy enemy) {
+
+        if( x >= enemy.getX() && x + sizeX <= enemy.getX() + enemy.getSize()) {
+            return y <= enemy.getY() + enemy.getSize();
+        }
+        return false;
     }
 }
