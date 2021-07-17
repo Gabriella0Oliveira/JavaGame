@@ -1,3 +1,7 @@
+package view;
+
+import controller.SpaceGame;
+
 import javax.swing.*;
 import java.awt.*;
 

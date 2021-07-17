@@ -1,3 +1,7 @@
+package models;
+
+import models.Enemy;
+
 import java.awt.*;
 
 public class Shot {

@@ -1,3 +1,9 @@
+package controller;
+
+import models.Enemy;
+import models.Shot;
+import models.Spaceship;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -69,7 +75,7 @@ public class SpaceGame extends JPanel implements Runnable, KeyListener {
             }
         }
 
-        for (Enemy value : enemies) {
+        for (models.Enemy value : enemies) {
             value.update();
         }
 
